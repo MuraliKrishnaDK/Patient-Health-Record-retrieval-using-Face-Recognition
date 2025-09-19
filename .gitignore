@@ -58,7 +58,7 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
-db.sqlite3
+# db.sqlite3  # Commented out to include database
 db.sqlite3-journal
 
 # Flask stuff:
@@ -155,17 +155,17 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# TensorFlow logs and models
-logs/
-*.pb
-*.pbtxt
-*.tgz
+# TensorFlow logs and models - commented out to include important model files
+# logs/
+# *.pb
+# *.pbtxt
+# *.tgz
 
-# Excel files
-*.xlsx
-*.xls
+# Excel files - commented out to include validation files
+# *.xlsx
+# *.xls
 
-# Audio files
-*.mp3
-*.wav
-*.ogg
+# Audio files - commented out to include project audio
+# *.mp3
+# *.wav
+# *.ogg
