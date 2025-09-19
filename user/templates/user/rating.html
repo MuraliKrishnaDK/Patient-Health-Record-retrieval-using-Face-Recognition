@@ -1,0 +1,200 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+{{title}}
+
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="project">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="author" content="vinayak sharma">
+
+  <title>{{title}}</title>
+
+
+  <!-- bootstrap file -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- bootstrap file-->
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- main css -->
+  <link rel="stylesheet" type="text/css" href="{% static "index.css" %}" />
+
+
+  <!-- message here -->
+
+  {% if messages %}
+  {% for message in messages %}
+
+  <script>
+    alert("{{ message }}");
+  </script>
+
+  {% endfor %}
+  {% endif %}
+
+  <!--_______________________________________________-->
+
+
+
+</head>
+<style>
+    
+    body {
+        
+         background-image: url({% static "user/css/images/bg2.jpg" %});
+  
+}
+
+.container {
+  border-radius: 5px;
+    display: block;
+    margin-top: 10px;
+  background-color: #f2f2f2;
+  padding: 20px;
+     margin: auto;
+    min-width: 1000px;
+    }
+.myDiv {
+  border: 5px outset red;
+  background-color: lightblue;
+  text-align: center;
+}
+div.gallery {
+        display: block;
+    margin-top: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+margin: auto;
+    min-width: 1100px;
+  background-color: lightblue;
+  text-align: center;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+    
+body {font-family: Arial, Helvetica, sans-serif; bgcolor="green"}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}    
+</style>
+<body class="container-fluid"  bgcolor="green">
+
+
+  <header class="row">
+
+    <!-- navbar-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" class="styleheader" href="{% url "index" %}">Life Monitor</a>
+        </div>
+        <div class="collapse navbar-collapse" id="mainNavBar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url "index" %}">Home</a></li>
+
+            {% if user.is_authenticated %}
+            <li><a href="{% url "logout" %}"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Logout</a></li>
+            {% else %}
+            <li><a href="{% url "register" %}"><span class="glyphicon glyphicon-user"></span> &nbsp; Sign up</a></li>
+            <li><a href="{% url "login" %}"><span class="glyphicon glyphicon-log-in"></span> &nbsp; Log in</a></li>
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+    <p>Details</p>
+{% if n %}
+         <h3>patient id is {{n}}</h3>
+         {% endif %}
+<h3>Add Patient Details</h3>
+
+<div class="container" Display: block;>
+   
+  <form action="{% url "senddetails" %}">
+    <textarea id="name" name="name" placeholder="Enter Patient name" style="height:50px"></textarea>
+    <textarea id="econtact" name="econtact" placeholder="Enter Emergency Contact" style="height:50px"></textarea>
+    <textarea id="Adress" name="Adress" placeholder="Enter Patient Address" style="height:50px"></textarea>
+    <textarea id="Mhistory" name="Mhistory" placeholder="Enter Patient Medical History, If any." style="height:50px"></textarea>
+    <textarea id="pAge" name="pAge" placeholder="Enter patient age" style="height:50px"></textarea>
+    <textarea id="pbloodgrp" name="pbloodgrp" placeholder="Enter Patient blood group(A+,A-,B+,B-,O+,O-,Ab+,AB-)" style="height:50px"></textarea>
+    <textarea id="cdh" name="cdh" placeholder="Enter Patient clinical diagnose history" style="height:50px"></textarea>
+    <textarea id="sah" name="sah" placeholder="Enter Substance Abuse History" style="height:50px"></textarea>
+    <textarea id="folowup" name="folowup" placeholder="folow up" style="height:50px"></textarea>
+    <textarea id="occupation" name="occupation" placeholder="occupation" style="height:50px"></textarea>
+    <textarea id="state" name="state" placeholder="state" style="height:50px"></textarea>
+    
+    <input type="submit" value="Submit" >
+  </form>
+  
+  <form action="{% url "train" %}">
+   
+    <input type="submit" value="Train dataset" >
+  </form>
+    
+    </body>
+</html>

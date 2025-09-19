@@ -1,0 +1,253 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="project">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="author" content="vinayak sharma">
+
+  <title>{{title}}</title>
+
+
+  <!-- bootstrap file -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- bootstrap file-->
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- main css -->
+  <link rel="stylesheet" type="text/css" href="{% static "index.css" %}" />
+
+
+  <!-- message here -->
+
+  {% if messages %}
+  {% for message in messages %}
+
+  <script>
+    alert("{{ message }}");
+  </script>
+
+  {% endfor %}
+  {% endif %}
+
+  <!--_______________________________________________-->
+
+
+
+</head>
+<style>
+    * {
+  box-sizing: border-box;
+}
+
+/* Style inputs */
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+/* Create two columns that float next to eachother */
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+    .container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.body {
+  height: 100%;
+}
+.html {
+  height: 100%;
+}
+.bg {
+  /* The image used */
+  background-image: url({% static "user/css/images/bg2.jpg" %});
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+    
+
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+<body class="bg" >
+
+
+  <header class="row">
+
+    <!-- navbar-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" class="styleheader" href="{% url "index" %}">Life Survilliance</a>
+        </div>
+        <div class="collapse navbar-collapse" id="mainNavBar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url "index" %}">Home</a></li>
+
+            {% if user.is_authenticated %}
+            <li><a href="{% url "logout" %}"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Logout</a></li>
+            {% else %}
+            <li><a href="{% url "register" %}"><span class="glyphicon glyphicon-user"></span> &nbsp; Sign up</a></li>
+            <li><a href="{% url "login" %}"><span class="glyphicon glyphicon-log-in"></span> &nbsp; Log in</a></li>
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <br/>
+  <br>
+  <br>
+  <div class="row">
+    {% block start %}
+    {% if user.is_authenticated %}
+     
+    <center><h2 style="color:#00FFFF;">welcome back {{user.username}}! </h2></center>
+      <div class="container">
+  <div style="text-align:center">
+    <h2>Health Monitor Ambulance</h2>
+    <p>We Work Hard to Save lives</p>
+  </div>
+  <div class="row">
+    <div class="column">
+      <img src={% static "user/css/images/home.jpg" %} style= width="300" 
+     height="300">
+    </div>
+    <div class="column">
+      <form action="{% url "fetchdetails" %}">
+      <label for="pnumb">Patient ID: {{e}}</label>
+        <p></p>
+        <label for="fname">Name: {{a}}</label>
+        <p></p>
+        <label for="lname">Adress: {{b}}</label>
+          <p></p>
+        <label for="country">Emergency Contact: {{c}}</label>
+          <p></p>
+          <label for="country">Medical History: {{d}}</label>
+          <p></p>
+          
+        <label for="page">Patient Age: {{f}}</label>
+          <p></p>
+        <label for="bg">Blood group: {{g}}</label>
+          <p></p>
+          <label for="cdh">Clinical Diagnose History: {{h}}</label>
+          <p></p>
+          <label for="sah">Substance Abuse History: {{i}}</label>
+          <p></p>
+          <label for="follow">Follow up: {{j}}</label>
+        <p></p>
+        <label for="occu">Occuptation: {{k}}</label>
+          <p></p>
+        <label for="state">State: {{l}}</label>
+          <p></p>
+          <label for="time">TimeStamp: {{m}}</label>
+          <p><p/>
+        <input type="submit" value="Find Patient Details" >
+         <p></p>
+      </form>
+      
+      <form action="{% url "adddetails" %}">
+         <input type="submit" value="Add Patient Details" >
+         </form>
+         {% if update == 1 %}
+         <p></p>
+         <form action="{% url "adddetails2" %}">
+         <input type="submit" value="update Patient Details" >
+         </form>
+         {% endif %}
+    </div>
+  </div>
+</div>
+      
+
+    {% else %}
+    <center><h1>Welcome to Health App</h1></center>
+       <center><h2>Login or Signup to continue</h2></center>
+    {% endif %}
+    {% endblock %}
+  </div>
+</body>
+
+</html>
