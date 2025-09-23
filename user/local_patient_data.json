@@ -1,0 +1,51 @@
+{
+  "patientids": {
+    "1": "John Doe",
+    "2": "Jane Smith",
+    "15": "Asdfff"
+  },
+  "patientDetails": {
+    "1": {
+      "name": "John Doe",
+      "econtact": "555-123-4567",
+      "Adress": "123 Main Street",
+      "Mhistory": "Diabetes, Hypertension",
+      "pid": "1",
+      "pAge": "45",
+      "pbloodgrp": "O+",
+      "cdh": "2023-01-15",
+      "sah": "2023-02-20",
+      "folowup": "2023-03-15",
+      "occupation": "Engineer",
+      "state": "CA",
+      "timestamp": "2023-01-15 10:30:00"
+    },
+    "2": {
+      "name": "Jane Smith",
+      "econtact": "555-987-6543",
+      "Adress": "456 Oak Avenue",
+      "Mhistory": "Asthma",
+      "pid": "2",
+      "pAge": "32",
+      "pbloodgrp": "A+",
+      "cdh": "2023-02-10",
+      "sah": "2023-02-25",
+      "folowup": "2023-04-10",
+      "occupation": "Teacher",
+      "state": "NY",
+      "timestamp": "2023-02-10 14:20:00"
+    },
+    "15": {
+      "name": "Asdfff",
+      "econtact": "9353895898",
+      "Adress": "ksfakfjkb",
+      "Mhistory": "kjlkjbkb",
+      "pid": "15",
+      "pAge": "67",
+      "pbloodgrp": "A+",
+      "cdh": "nbjb",
+      "sah": "kjnjk",
+      "folowup": "jkbjh",
+      "occupation": "jiop",
+      "state": "kerala",
+      "timestamp": 
